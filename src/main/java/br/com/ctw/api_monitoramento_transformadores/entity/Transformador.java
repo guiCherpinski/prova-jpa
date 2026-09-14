@@ -1,5 +1,6 @@
 package br.com.ctw.api_monitoramento_transformadores.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,6 +8,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
+
+/**
+ * Essa é uma entity que representa um transformador
+ */
 
 @Entity
 @Table(name = "tb_transformadores")
@@ -60,12 +65,15 @@ public class Transformador {
     )
     private BigDecimal limitTempEnrol;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "transformador", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<AlertaTermico> alertaTermico = new HashSet<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "transformador", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<LeituraTermica> leituraTermica = new HashSet<>();
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(
             name = "transformador_tecnico",

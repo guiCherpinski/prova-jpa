@@ -1,11 +1,16 @@
 package br.com.ctw.api_monitoramento_transformadores.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
+
+/**
+ * Essa é uma entity que representa um técnico
+ */
 
 @Entity
 @Table(name = "tb_tecnico")
@@ -48,6 +53,7 @@ public class Tecnico {
     )
     private String email;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "tecnicos")
     private Set<Transformador> transformadores = new HashSet<>();
 }

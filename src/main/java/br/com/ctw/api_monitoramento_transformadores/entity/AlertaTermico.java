@@ -1,5 +1,6 @@
 package br.com.ctw.api_monitoramento_transformadores.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,10 @@ import lombok.Setter;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+
+/**
+ * Essa é uma classe que entity que representa um alerta térmico
+ */
 
 @Entity
 @Table(name = "tb_alerta_termico")
@@ -20,10 +25,12 @@ public class AlertaTermico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "transf_id", nullable = false)
     private Transformador transformador;
 
+    @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "leitura_id", nullable = false)
     private LeituraTermica leituraTermica;

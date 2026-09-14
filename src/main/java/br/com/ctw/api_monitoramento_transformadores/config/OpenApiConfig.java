@@ -1,3 +1,5 @@
+package br.com.ctw.api_monitoramento_transformadores.config;
+
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
@@ -19,8 +21,8 @@ public class OpenApiConfig {
                         .version("1.0.0")
                         .description("Sistema de gestão de ativos elétricos, medições térmicas e emissão automática de alertas.")
                         .contact(new Contact()
-                                .name("Suporte Técnico")
-                                .email("suporte@empresa.com.br"))
+                                .name("Guilherme Gonçalves Cherpinski")
+                                .email("cherpinski@empresa.com.br"))
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("https://www.apache.org/licenses/LICENSE-2.0")));

@@ -5,9 +5,8 @@ import br.com.ctw.api_monitoramento_transformadores.entity.LeituraTermica;
 import br.com.ctw.api_monitoramento_transformadores.entity.Tecnico;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.*;
-
 import java.math.BigDecimal;
+import java.util.Set;
 
 /**
  * Essa classe define o que vai ser devolvido para visualização
@@ -18,9 +17,12 @@ import java.math.BigDecimal;
  * @param potenciaKva
  * @param limitTempOleo
  * @param limitTempEnrol
+ * @param alertaTermico
+ * @param leituraTermica
+ * @param tecnicos
  */
 
-public record TransformadorResponse(
+public record TransformadorTotalResponse(
         @Schema(description = "Identificador único do transformador")
         Long id,
 
@@ -40,6 +42,15 @@ public record TransformadorResponse(
         BigDecimal limitTempOleo,
 
         @Schema(description = "Limite de temperatura do enrolamento")
-        BigDecimal limitTempEnrol
+        BigDecimal limitTempEnrol,
+
+        @Schema(description = "Lista de alertas")
+        Set<AlertaTermico> alertaTermico,
+
+        @Schema(description = "Lista de leituras")
+        Set<LeituraTermica> leituraTermica,
+
+        @Schema(description = "Lista de técnicos")
+        Set<Tecnico> tecnicos
 ) {
 }
